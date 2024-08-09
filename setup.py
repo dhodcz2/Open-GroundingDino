@@ -38,7 +38,7 @@ with open('requirements.txt') as f:
 
 setup(
     name="open_groundingdino",
-    packages=find_packages(),
+    packages=find_packages('.', '*'),
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.11",
