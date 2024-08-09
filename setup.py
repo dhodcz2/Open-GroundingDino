@@ -1,5 +1,6 @@
-
+import os
 import subprocess
+import os
 
 from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
@@ -36,13 +37,15 @@ class CustomInstallCommand(_install):
 with open('requirements.txt') as f:
     install_requires = f.read().splitlines()
 
+packages = find_packages('../')
+
 setup(
     name="open_groundingdino",
-    packages=find_packages('.', '*'),
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.11",
     ],
+    packages=packages,
     python_requires='>=3.11',
     include_package_data=True,
     cmdclass={
