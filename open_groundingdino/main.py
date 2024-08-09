@@ -11,17 +11,17 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader, DistributedSampler
 
-from util.get_param_dicts import get_param_dict
-from util.logger import setup_logger
-from util.slconfig import DictAction, SLConfig
-from util.utils import  BestMetricHolder
-import util.misc as utils
+from open_groundingdino.util.get_param_dicts import get_param_dict
+from open_groundingdino.util.logger import setup_logger
+from open_groundingdino.util.slconfig import DictAction, SLConfig
+from open_groundingdino.util.utils import  BestMetricHolder
+import open_groundingdino.util.misc as utils
 
-import datasets
-from datasets import build_dataset, get_coco_api_from_dataset
+import open_groundingdino.datasets
+from open_groundingdino.datasets import build_dataset, get_coco_api_from_dataset
 from engine import evaluate, train_one_epoch
 
-from groundingdino.util.utils import clean_state_dict
+from open_groundingdino.groundingdino.util.utils import clean_state_dict
 
 
 def get_args_parser():
@@ -74,7 +74,7 @@ def get_args_parser():
 
 def build_model_main(args):
     # we use register to maintain models from catdet6 on.
-    from models.registry import MODULE_BUILD_FUNCS
+    from open_groundingdino.models.registry import MODULE_BUILD_FUNCS
     assert args.modelname in MODULE_BUILD_FUNCS._module_dict
 
     build_func = MODULE_BUILD_FUNCS.get(args.modelname)
@@ -358,7 +358,7 @@ def main(args):
     # remove the copied files.
     copyfilelist = vars(args).get('copyfilelist')
     if copyfilelist and args.local_rank == 0:
-        from datasets.data_util import remove
+        from open_groundingdino.datasets.data_util import remove
         for filename in copyfilelist:
             print("Removing: {}".format(filename))
             remove(filename)

@@ -5,12 +5,12 @@ import torch
 from PIL import Image, ImageDraw, ImageFont
 
 # please make sure https://github.com/IDEA-Research/GroundingDINO is installed correctly.
-import groundingdino.datasets.transforms as T
-from groundingdino.models import build_model
-from groundingdino.util import box_ops
-from groundingdino.util.slconfig import SLConfig
-from groundingdino.util.utils import clean_state_dict, get_phrases_from_posmap
-from groundingdino.util.vl_utils import create_positive_map_from_span
+from open_groundingdino.models import build_model
+import open_groundingdino.datasets.transforms as T
+from open_groundingdino.groundingdino.util import box_ops
+from open_groundingdino.groundingdino.util.slconfig import SLConfig
+from open_groundingdino.groundingdino.util.utils import clean_state_dict, get_phrases_from_posmap
+from open_groundingdino.groundingdino.util.vl_utils import create_positive_map_from_span
 
 
 def plot_boxes_to_image(image_pil, tgt):

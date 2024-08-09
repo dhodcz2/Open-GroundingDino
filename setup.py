@@ -6,7 +6,6 @@ from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
 from setuptools.command.install import install as _install
 
-
 class CustomBuildCommand(_build_py):
     def run(self):
         # Run the nested setup.py

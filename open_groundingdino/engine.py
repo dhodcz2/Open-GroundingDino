@@ -8,14 +8,14 @@ import os
 import sys
 from typing import Iterable
 
-from util.utils import to_device
+from open_groundingdino.util.utils import to_device
 import torch
 
-import util.misc as utils
-from datasets.coco_eval import CocoEvaluator
-from datasets.cocogrounding_eval import CocoGroundingEvaluator
+import open_groundingdino.util.misc as utils
+from open_groundingdino.datasets.coco_eval import CocoEvaluator
+from open_groundingdino.datasets.cocogrounding_eval import CocoGroundingEvaluator
 
-from datasets.panoptic_eval import PanopticEvaluator
+from open_groundingdino.datasets.panoptic_eval import PanopticEvaluator
 
 
 def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,

@@ -8,7 +8,7 @@ import random
 import os, sys
 sys.path.append(os.path.dirname(sys.path[0]))
 
-import datasets.transforms as T
+import open_groundingdino.datasets.transforms as T
 
 class ODVGDataset(VisionDataset):
     """
@@ -173,7 +173,7 @@ def make_coco_transforms(image_set, fix_size=False, strong_aug=False, args=None)
             ])
 
         if strong_aug:
-            import datasets.sltransform as SLT
+            import open_groundingdino.datasets.sltransform as SLT
             
             return T.Compose([
                 T.RandomHorizontalFlip(),
