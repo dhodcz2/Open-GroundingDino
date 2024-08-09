@@ -37,7 +37,7 @@ class CustomInstallCommand(_install):
 with open('requirements.txt') as f:
     install_requires = f.read().splitlines()
 
-packages = find_packages('../')
+# find_packages('.')
 
 setup(
     name="open_groundingdino",
@@ -45,7 +45,7 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.11",
     ],
-    packages=packages,
+    # packages=packages,
     python_requires='>=3.11',
     include_package_data=True,
     cmdclass={
