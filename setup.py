@@ -14,7 +14,7 @@ class CustomBuildCommand(_build_py):
 
     def run_subprocess(self, directory):
         subprocess.check_call(
-            ['python', 'setup.py', 'build', 'install'], cwd=directory
+            ['python', './setup.py', 'build', 'install'], cwd=directory
         )
         subprocess.check_call(
             ['python', 'test.py'], cwd=directory
@@ -27,7 +27,7 @@ class CustomInstallCommand(_install):
 
     def run_subprocess(self, directory):
         subprocess.check_call(
-            ['python', 'setup.py', 'build', 'install'], cwd=directory
+            ['python', './setup.py', 'build', 'install'], cwd=directory
         )
         subprocess.check_call(
             ['python', 'test.py'], cwd=directory

@@ -8,23 +8,18 @@ if __name__=="__main__":
     # for debug only
     import os, sys
     sys.path.append(os.path.dirname(sys.path[0]))
-from torchvision.datasets.vision import VisionDataset
 
-import json
-from pathlib import Path
-import random
 import os
-from typing import Any, Callable, List, Optional, Tuple
-
-from PIL import Image
+import random
 
 import torch
 import torch.utils.data
 import torchvision
+from PIL import Image
 from pycocotools import mask as coco_mask
 
-from open_groundingdino.datasets.data_util import preparing_dataset
 import open_groundingdino.datasets.transforms as T
+from open_groundingdino.datasets.data_util import preparing_dataset
 from open_groundingdino.util.box_ops import box_cxcywh_to_xyxy, box_iou
 
 __all__ = ['build']
