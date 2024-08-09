@@ -10,7 +10,7 @@ from setuptools.command.install import install as _install
 class CustomBuildCommand(_build_py):
     def run(self):
         # Run the nested setup.py
-        self.run_subprocess('models/GroundingDINO/ops')
+        self.run_subprocess('open_groundingdino/models/GroundingDINO/ops')
         super().run()
 
     def run_subprocess(self, directory):
@@ -23,7 +23,7 @@ class CustomBuildCommand(_build_py):
 
 class CustomInstallCommand(_install):
     def run(self):
-        self.run_subprocess('models/GroundingDINO/ops')
+        self.run_subprocess('open_groundingdino/models/GroundingDINO/ops')
         super().run()
 
     def run_subprocess(self, directory):
