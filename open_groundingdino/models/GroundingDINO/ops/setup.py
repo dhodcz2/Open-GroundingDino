@@ -8,19 +8,31 @@
 
 import os
 import glob
+import subprocess
+import sys
 
 import torch
-
-from torch.utils.cpp_extension import CUDA_HOME
-from torch.utils.cpp_extension import CppExtension
-from torch.utils.cpp_extension import CUDAExtension
-
-from setuptools import find_packages
-from setuptools import setup
+from torch.utils.cpp_extension import CUDA_HOME, CppExtension, CUDAExtension
+from setuptools import find_packages, setup
+from setuptools.command.build_py import build_py as _build_py
+from setuptools.command.install import install as _install
+from pkg_resources import get_distribution, DistributionNotFound
 
 requirements = ["torch", "torchvision"]
 
+
+def ensure_torch_installed():
+    try:
+        # Check if torch is already installed
+        get_distribution('torch')
+    except DistributionNotFound:
+        # If not installed, install torch
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'torch'])
+
+
 def get_extensions():
+    ensure_torch_installed()  # Ensure torch is installed
+
     this_dir = os.path.dirname(os.path.abspath(__file__))
     extensions_dir = os.path.join(this_dir, "src")
 
@@ -33,8 +45,6 @@ def get_extensions():
     extra_compile_args = {"cxx": []}
     define_macros = []
 
-
-
     if torch.cuda.is_available() and CUDA_HOME is not None:
         extension = CUDAExtension
         sources += source_cuda
@@ -46,7 +56,7 @@ def get_extensions():
             "-D__CUDA_NO_HALF2_OPERATORS__",
         ]
     else:
-        raise NotImplementedError('Cuda is not availabel')
+        raise NotImplementedError('Cuda is not available')
 
     sources = [os.path.join(extensions_dir, s) for s in sources]
     include_dirs = [extensions_dir]
