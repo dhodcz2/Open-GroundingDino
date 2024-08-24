@@ -16,35 +16,35 @@ def ensure_torch_installed():
         # If not installed, install torch
         subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'torch'])
 
-class CustomBuildCommand(_build_py):
-    def run(self):
-        ensure_torch_installed()
-        # Run the nested setup.py
-        self.run_subprocess('open_groundingdino/models/GroundingDINO/ops')
-        super().run()
-
-    def run_subprocess(self, directory):
-        subprocess.check_call(
-            [sys.executable, './setup.py', 'build', 'install'], cwd=directory
-        )
-        subprocess.check_call(
-            [sys.executable, 'test.py'], cwd=directory
-        )
-
-class CustomInstallCommand(_install):
-    def run(self):
-        ensure_torch_installed()
-        self.run_subprocess('open_groundingdino/models/GroundingDINO/ops')
-        super().run()
-
-    def run_subprocess(self, directory):
-        subprocess.check_call(
-            [sys.executable, './setup.py', 'build', 'install'], cwd=directory
-        )
-        subprocess.check_call(
-            [sys.executable, 'test.py'], cwd=directory
-        )
-
+# class CustomBuildCommand(_build_py):
+#     def run(self):
+#         ensure_torch_installed()
+#         # Run the nested setup.py
+#         self.run_subprocess('open_groundingdino/models/GroundingDINO/ops')
+#         super().run()
+#
+#     def run_subprocess(self, directory):
+#         subprocess.check_call(
+#             [sys.executable, './setup.py', 'build', 'install'], cwd=directory
+#         )
+#         subprocess.check_call(
+#             [sys.executable, 'test.py'], cwd=directory
+#         )
+#
+# class CustomInstallCommand(_install):
+#     def run(self):
+#         ensure_torch_installed()
+#         self.run_subprocess('open_groundingdino/models/GroundingDINO/ops')
+#         super().run()
+#
+#     def run_subprocess(self, directory):
+#         subprocess.check_call(
+#             [sys.executable, './setup.py', 'build', 'install'], cwd=directory
+#         )
+#         subprocess.check_call(
+#             [sys.executable, 'test.py'], cwd=directory
+#         )
+#
 with open('requirements.txt') as f:
     install_requires = f.read().splitlines()
 
@@ -56,10 +56,10 @@ setup(
     ],
     python_requires='>=3.11',
     include_package_data=True,
-    cmdclass={
-        'build_py': CustomBuildCommand,
-        'install': CustomInstallCommand,
-    },
+    # cmdclass={
+    #     'build_py': CustomBuildCommand,
+    #     'install': CustomInstallCommand,
+    # },
     install_requires=install_requires,
     entry_points={},
 )

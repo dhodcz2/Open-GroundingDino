@@ -61,6 +61,7 @@ def get_extensions():
     ]
     return ext_modules
 
+
 setup(
     name="MultiScaleDeformableAttention",
     version="1.0",
@@ -70,4 +71,5 @@ setup(
     packages=find_packages(exclude=("configs", "tests",)),
     ext_modules=get_extensions(),
     cmdclass={"build_ext": torch.utils.cpp_extension.BuildExtension},
+    requires=requirements,
 )

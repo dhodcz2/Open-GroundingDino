@@ -14,3 +14,4 @@ supervision==0.6.0
 pycocotools
 pyyaml>3.10
 colorlog
+open_groundingdino_ops @ git+https://github.com/dhodcz2/Open-GroundingDino.git@main#subdirectory=open_groundingdino/models/GroundingDINO/ops
