@@ -101,7 +101,10 @@ setup(
     python_requires='>=3.11',
     include_package_data=True,
     install_requires=install_requires,
-    packages=find_packages(exclude=("configs", "tests",)),
+    packages=find_packages(
+        include=['open_groundingdino', 'open_groundingdino.*'],
+        exclude=("configs", "tests",)
+    ),
     cmdclass={
         'install': CustomInstallCommand,
         'build_ext': CustomBuildExtCommand,
