@@ -105,9 +105,15 @@ setup(
             'open_groundingdino',
             'open_groundingdino.*',
             'open_groundingdino.tools.*',
+            'open_groundingdino.groundingdino.util.*',
+            'open_groundingdino.groundingdino.*',
+            'open_groundingdino.groundingdino',
         ],
         exclude=("configs", "tests",)
     ),
+    package_dir={
+        'open_groundingdino.groundingdino.util': 'open_groundingdino/groundingdino/util'
+    },
     cmdclass={
         'install': CustomInstallCommand,
         'build_ext': CustomBuildExtCommand,
