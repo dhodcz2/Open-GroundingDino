@@ -9,7 +9,6 @@ from setuptools import find_packages, setup
 from setuptools.command.install import install
 from setuptools.command.build_ext import build_ext
 
-
 def ensure_torch_installed():
     try:
         get_distribution('torch')
@@ -102,7 +101,11 @@ setup(
     include_package_data=True,
     install_requires=install_requires,
     packages=find_packages(
-        include=['open_groundingdino', 'open_groundingdino.*'],
+        include=[
+            'open_groundingdino',
+            'open_groundingdino.*',
+            'open_groundingdino.tools.*',
+        ],
         exclude=("configs", "tests",)
     ),
     cmdclass={
