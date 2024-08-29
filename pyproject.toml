@@ -1,15 +1,6 @@
 [build-system]
-#requires = ["setuptools>=42", "wheel", "torch", "numpy"]
-requires = ["setuptools>=42", "wheel", "numpy"]
+requires = ["setuptools>=42", "wheel", "torch", "numpy"]
+#requires = ["setuptools>=42", "wheel", "numpy"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-packages = ["open_groundingdino"]
-include-package-data = true
 
-[tool.setuptools.package-data]
-"open_groundingdino" = ["models/GroundingDINO/ops/src/cpu/**/*"]
-
-[project]
-name = "open_groundingdino"  # Add the name of your project
-version = "1.0"  # Specify the version of your package
