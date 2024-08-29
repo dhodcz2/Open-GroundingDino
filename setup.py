@@ -36,7 +36,7 @@ class CustomInstallCommand(install):
 
 class CustomBuildExtCommand(build_ext):
     def run(self):
-        raise Exception
+        # raise Exception
         ensure_torch_installed()
         check_cuda_availability()
         import torch
