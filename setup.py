@@ -114,6 +114,9 @@ setup(
     package_dir={
         'open_groundingdino.groundingdino.util': 'open_groundingdino/groundingdino/util'
     },
+    package_data={
+        '': ['models/GroundingDINO/ops/src/cpu/**/*'],  # Adjust if needed
+    },
     cmdclass={
         'install': CustomInstallCommand,
         'build_ext': CustomBuildExtCommand,
